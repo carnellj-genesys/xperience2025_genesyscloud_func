@@ -1,0 +1,21 @@
+{
+  "name": "xp2025_get_ticket_status",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "scripts": {
+    "compile": "tsc",
+    "build": "rm -fr dist/* && npm run compile",
+    "zip": "zip -r xp2025_get_ticket_status.zip dist/ node_modules/",
+    "zipnodev": "npm install --omit=dev && zip -r xp2025_get_ticket_status.zip dist/ node_modules/ && npm install"
+  },
+  "devDependencies": {
+    "@tsconfig/node20": "^20.1.2",
+    "@types/aws-lambda": "^8.10.145",
+    "@types/node": "^22.9.0",
+    "@types/node-jose": "^1.1.13",
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "axios": "^1.7.7"
+  }
+}
