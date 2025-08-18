@@ -3,14 +3,14 @@ terraform {
   required_providers {
     genesyscloud = {
       source  = "mypurecloud/genesyscloud"
-      version = "~> 1.68.2"
+      version = "1.68.3"
     }
   }
 }
 
 resource "genesyscloud_integration" "Xperience_2025_Integration" {
   config {
-    name       = "Xperience2025_Get_Ticket_Status"
+    name       = "Xperience2025_Get_Ticket_Status-TF"
     properties = jsonencode({		})
     advanced   = jsonencode({		})
   }
@@ -19,7 +19,7 @@ resource "genesyscloud_integration" "Xperience_2025_Integration" {
 }
 //Genesys Cloud Data Actions
 resource "genesyscloud_integration_action" "Xperience_2025_Get_Ticket_Status" {
-  category = "Xperience2025_Get_Ticket_Status"
+  category = "Function Data Actions"
   config_response {
     success_template = "$${rawResult}"
   }
@@ -75,11 +75,11 @@ resource "genesyscloud_integration_action" "Xperience_2025_Get_Ticket_Status" {
     request_url_template = ""
   }
   integration_id = genesyscloud_integration.Xperience_2025_Integration.id
-  name           = "Xperience2025_Get_Ticket_Status"
+  name           = "Xperience2025_Get_Ticket_Status-TF"
   secure         = false
 
   function_config {
-    file_path      = "./xp2025_get_ticket_status.zip"
+    file_path      = "/Users/john.carnell/work/xperience2025_genesyscloud_func/xp2025_get_ticket_status.zip"
     description     = "Retrieve a ticket status from TicketFlow"
     handler         = "dist/index.handler"
     runtime         = "nodejs20.x"
